@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->dateTime('due_date');
+            $table->boolean('is_submitted')->default(false);
+            $table->unsignedBigInteger('course_id');
             $table->timestamps();
         });
     }

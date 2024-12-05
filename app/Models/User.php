@@ -45,4 +45,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // In app/Models/User.php
+    public function courses() {
+    return $this->hasMany(Course::class);
+    }
+
+     function activities() {
+    return $this->hasManyThrough(Activity::class, Course::class);
+    }
 }

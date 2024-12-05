@@ -10,6 +10,18 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
+
+                    {{-- Role-based content --}}
+                    @if(Auth::user()->role == 'instructor')
+                        <h1>Instructor Dashboard</h1>
+                        <a href="{{ route('create.course') }}" class="text-blue-600">Create Course</a>
+                    @elseif(Auth::user()->role == 'student')
+                        <h1>Student Dashboard</h1>
+                        <a href="{{ route('view.courses') }}" class="text-blue-600">View Courses</a>
+                    @else
+                        <h1>Admin Dashboard</h1>
+                        <a href="{{ route('manage.users') }}" class="text-blue-600">Manage Users</a>
+                    @endif
                 </div>
             </div>
         </div>

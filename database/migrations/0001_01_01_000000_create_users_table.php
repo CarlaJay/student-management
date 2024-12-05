@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            // Add role column with default value 'student'
+        $table->string('role')->default('student'); // 'student' or 'instructor'
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
